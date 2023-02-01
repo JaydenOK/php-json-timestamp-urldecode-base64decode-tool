@@ -1,12 +1,12 @@
 # php-json-timestamp-urldecode-base64decode-tool
-php-json-timestamp-urldecode-base64decode-tool  
+php-tool-json-timestamp-url-base64-decode  
 
-php 开发工具-json-url-解析，时间戳-日期转换，PHP代码在执行等  
+php开发便捷工具: PHP代码在执行、json-url-格式化-解析、时间戳-日期转换、mongo数据格式化等  
 
 
-创建访问站点: [tool.cc](docs/CONTRIBUTING.md) 
+本地创建当前目录访问站点 tool.cc
 
-演示：
+访问 [http://tool.cc](http://tool.cc) : 
 
 ![image1](static/a.jpg) 
 
