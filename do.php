@@ -1,6 +1,6 @@
 <?php
 
-require '../test.cc/common/functions.php';
+//require '../test.cc/common/functions.php';
 
 //工具后端处理
 class ErrorHandle
