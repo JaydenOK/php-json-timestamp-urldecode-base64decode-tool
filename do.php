@@ -15,14 +15,14 @@ class ErrorHandle
 
     public static function appError($errno, $errstr, $errfile = '', $errline = 0)
     {
-        $ret = ['code' => -1001,  'message' => 'line:'.$errline.';  message:'.$errstr ,'data' => []];
+        $ret = ['code' => -1001, 'message' => 'line:' . $errline . ';  message:' . $errstr, 'data' => []];
         exit(json_encode($ret));
     }
 
 
     public static function appException($e)
     {
-        $ret = ['code' => -1002, 'message' => 'line:'.$e->getLine().';  message:'.$e->getMessage(), 'data' => []];
+        $ret = ['code' => -1002, 'message' => 'line:' . $e->getLine() . ';  message:' . $e->getMessage(), 'data' => []];
         exit(json_encode($ret));
     }
 
@@ -31,6 +31,7 @@ class ErrorHandle
         //log
     }
 }
+
 //注册处理类
 ErrorHandle::register();
 ###########################################################################################################
@@ -54,41 +55,41 @@ if ($type == 'date_to_timestamp') {
 } else if ($type == 'run') {
     $php_code = str_replace('<?php', '', $php_code);
     eval($php_code);
-	exit;
+    exit;
 } else if ($type == 'JsonToArray') {
     $ret = json_decode($php_code, true);
-	exit(print_r($ret, true));
+    exit(print_r($ret, true));
 } else if ($type == 'UrlDecode') {
     echo urldecode($php_code);
-	exit;
+    exit;
 } else if ($type == 'formatJson') {
-    $arr = json_decode($php_code,true);
-	exit(json_encode($arr, JSON_UNESCAPED_UNICODE));
+    $arr = json_decode($php_code, true);
+    exit(json_encode($arr, JSON_UNESCAPED_UNICODE));
 } else if ($type == 'UrlEncode') {
     echo urlencode($php_code);
-	exit;
+    exit;
 } else if ($type == 'Base64Decode') {
     echo base64_decode($php_code);
-	exit;
+    exit;
 } else if ($type == 'Base64Encode') {
     echo base64_encode($php_code);
-	exit;
+    exit;
 } else if ($type == 'MongoDecode') {
     $php_code = preg_replace_callback('/NumberInt\(\"(\d+)\"\)/i', function ($matches) {
-		return $matches[1];
-	}, $php_code);
-	$php_code = preg_replace_callback('/ObjectId\(\"(\w+)\"\)/i', function ($matches) {
-		return '"' . $matches[1] . '"';
-	}, $php_code);
-	echo $php_code;
-	exit;
+        return $matches[1];
+    }, $php_code);
+    $php_code = preg_replace_callback('/ObjectId\(\"(\w+)\"\)/i', function ($matches) {
+        return '"' . $matches[1] . '"';
+    }, $php_code);
+    echo $php_code;
+    exit;
 } else if ($type == 'Stripslashes') {
-	//去除反斜杠
+    //去除反斜杠
     $php_code = stripslashes($php_code);
-	echo $php_code;
-	exit;
+    echo $php_code;
+    exit;
 } else {
     $ret['message'] = "无操作";
 }
 
-exit(json_encode($ret, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+exit(json_encode($ret, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
