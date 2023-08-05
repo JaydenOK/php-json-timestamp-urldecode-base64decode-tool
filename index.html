@@ -112,6 +112,7 @@ textarea:focus{
 <button id="Base64Encode">Base64加密</button>&nbsp;
 <button id="Base64Decode">Base64解密</button>&nbsp;&nbsp;&nbsp;&nbsp;
 <button id="MongoDecode">去除mongo数据标记</button>&nbsp;&nbsp;
+<button id="Stripslashes">stripslashes删除反斜杠</button>&nbsp;&nbsp;
 
 <br>
 <textarea name="php_code" id="php_code" style="width:800px;height:400px;background-color:#ccc;font-weight: bold;font-size: 18px;"></textarea>
@@ -308,6 +309,19 @@ $(function(){
 		}
     });
 	
+	$('#Stripslashes').click(function(){
+		php_code = $("#php_code").val();
+		if(php_code != ""){
+			$.ajax({
+				 type: "POST",
+				 url: url,
+				 data: {"type":"Stripslashes", "php_code":php_code},
+				 success: function(json) {
+						$("#run_result").html(json);
+					}
+			 });
+		}
+    });
 	
 	
 	function triggerSomething(){

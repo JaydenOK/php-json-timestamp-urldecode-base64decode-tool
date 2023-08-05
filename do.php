@@ -1,6 +1,6 @@
 <?php
 
-require '../test.cc/common/functions.php';
+require 'functions.php';
 
 //工具后端处理
 class ErrorHandle
@@ -80,6 +80,11 @@ if ($type == 'date_to_timestamp') {
 	$php_code = preg_replace_callback('/ObjectId\(\"(\w+)\"\)/i', function ($matches) {
 		return '"' . $matches[1] . '"';
 	}, $php_code);
+	echo $php_code;
+	exit;
+} else if ($type == 'Stripslashes') {
+	//去除反斜杠
+    $php_code = stripslashes($php_code);
 	echo $php_code;
 	exit;
 } else {
